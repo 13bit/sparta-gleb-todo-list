@@ -1,3 +1,14 @@
+# Requirements
+
+- node 
+- npm
+- angular-cli (https://cli.angular.io/)
+
+# Install
+
+- `npm install`
+- `npm start`
+
 # TodoList
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.1.
