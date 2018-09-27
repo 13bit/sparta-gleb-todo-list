@@ -6,6 +6,8 @@
 
 # Install
 
+- `git clone`
+- `git pull`
 - `npm install`
 - `npm start`
 
