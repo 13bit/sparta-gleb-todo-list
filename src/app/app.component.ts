@@ -13,8 +13,15 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getAllTasks();
+  }
+
+  getAllTasks() {
     this.tasks = TASKS;
   }
 
+  addTask(task) {
+    this.tasks.push(task);
+  }
 
 }
