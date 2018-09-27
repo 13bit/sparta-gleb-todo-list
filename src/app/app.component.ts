@@ -8,6 +8,9 @@ import {TASKS} from "./tasks";
 })
 export class AppComponent implements OnInit {
   tasks;
+  task;
+
+  showForm: boolean = false;
 
   constructor() {
   }
@@ -20,8 +23,17 @@ export class AppComponent implements OnInit {
     this.tasks = TASKS;
   }
 
-  addTask(task) {
-    this.tasks.push(task);
+  addTask() {
+    this.showForm = true;
+  }
+
+  saveTask() {
+    if (this.task) {
+      this.tasks.push(this.task);
+      this.showForm = false;
+    }
+
+    this.task = '';
   }
 
 }
