@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {TASKS} from "./tasks";
+import {Task, TASKS} from "./tasks";
 
 @Component({
   selector: "app-root",
@@ -7,8 +7,8 @@ import {TASKS} from "./tasks";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent implements OnInit {
-  tasks;
-  task;
+  tasks: Task[];
+  task: Task;
 
   showForm: boolean = false;
 
@@ -25,15 +25,30 @@ export class AppComponent implements OnInit {
 
   addTask() {
     this.showForm = true;
+    this.task = {
+      id: this.getNextTaskId(),
+      task: ''
+    };
   }
 
-  saveTask() {
-    if (this.task) {
-      this.tasks.push(this.task);
-      this.showForm = false;
+  saveTask(task: Task) {
+    const taskIsExist = this.tasks.find((taskFromTasks) => taskFromTasks.id === task.id);
+
+    if (!taskIsExist) {
+      this.tasks.push(task);
     }
 
-    this.task = '';
+    this.showForm = false;
+  }
+
+  editTask(task) {
+    this.showForm = true;
+
+    this.task = task;
+  }
+
+  getNextTaskId(): number {
+    return this.tasks[this.tasks.length - 1].id + 1;
   }
 
 }
