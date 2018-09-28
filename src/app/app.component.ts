@@ -47,6 +47,12 @@ export class AppComponent implements OnInit {
     this.task = task;
   }
 
+  deleteTask(task) {
+    const taskIndex = this.tasks.findIndex((taskFromTasks) => taskFromTasks.id === task.id);
+
+    this.tasks.splice(taskIndex, 1);
+  }
+
   getNextTaskId(): number {
     return this.tasks[this.tasks.length - 1].id + 1;
   }
